@@ -1,5 +1,5 @@
  <html>
-<head>
+ <head>
     <meta charset="utf-8">
 
 
@@ -8,9 +8,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
-    <!-- <link rel="apple-touch-icon-precomposed" href="../img/angularjs-chat.png"> -->
-    <!-- <link rel="shortcut icon" href="../img/angularjs-chat.png"> -->
+    <link rel="stylesheet" href="../css/style.css">
 
     <title>AngularJS Basic Chat</title>
 
@@ -18,42 +16,126 @@
 
 <body>
 
-        <div ng-app="BasicChat">
-    <div ng-controller="chat">
-        <div ng-repeat="message in messages">
-            {{ message.user.name }}:
-            {{ message.data }}
+  <div class="popup-messages">
+
+    <div class="direct-chat-messages">
+
+        <div class="chat-box-single-line">
+            <abbr class="timestamp">October 8th, 2015</abbr>
         </div>
-        <form ng-submit="send()">
-            <input ng-model="textbox">
-        </form>
+
+        <!-- Message. Default to the left -->
+        <div class="direct-chat-msg doted-border">
+          <div class="direct-chat-info clearfix">
+            <span class="direct-chat-name pull-left">Osahan</span>
+        </div>
+        <!-- /.direct-chat-info -->
+        <img alt="message user image" src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" class="direct-chat-img"><!-- /.direct-chat-img -->
+        <div class="direct-chat-text">
+            Hey bro, how’s everything going ?
+        </div>
+        <div class="direct-chat-info clearfix">
+            <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+        </div>
+        <div class="direct-chat-info clearfix">
+            <span class="direct-chat-img-reply-small pull-left">
+
+            </span>
+            <span class="direct-chat-reply-name">Singh</span>
+        </div>
+    </div>
+    <!-- /.direct-chat-msg -->
+
+
+    <div class="chat-box-single-line">
+        <abbr class="timestamp">October 9th, 2015</abbr>
+    </div>
+
+
+
+    <!-- Message. Default to the left -->
+    <div class="direct-chat-msg doted-border">
+      <div class="direct-chat-info clearfix">
+        <span class="direct-chat-name pull-right">Osahan</span>
+    </div>
+    <!-- /.direct-chat-info -->
+    <img alt="iamgurdeeposahan" src="http://bootsnipp.com/img/avatars/bcf1c0d13e5500875fdd5a7e8ad9752ee16e7462.jpg" class="direct-chat-img">
+    <!-- /.direct-chat-img -->
+    <div class="direct-chat-text">
+        Hey bro, ..........................?
     </div>
 </div>
 
-    <!-- <script src="../../bower_components/jquery/dist/jquery.min.js"></script> -->
+</div>
+
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+
+    <div class="chat-box-single-line">
+            <abbr class="timestamp">October 8th, 2015</abbr>
+        </div>
+
+        <div ng-repeat="message in messages" class="chat_message_right col-sm-12">
+    <div class="sent-message-{{ message.self }}">
+            <div class="direct-chat-text">
+            {{ message.user.name }}:
+            {{ message.data }}
+            <br>
+        </div>
+        </div>
+         <div class="direct-chat-info clearfix">
+            <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+        </div>
+
+        <div class="clear"></div>
+
+            <!-- {{message}} -->
+        </div>
+
+       <form ng-click="send()">
+            <div class="popup-messages-footer">
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" ng-model="textbox" class="form-control input-sm chat_input sent-indicator {{ chat.status }}" placeholder="Write your message here..."  />
+                        <span class="input-group-btn" >
+                            <button class="btn btn-primary btn-sm" ng-model="submit" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>
 
 
-    <script src="../../bower_components/angular/angular.min.js"></script>
-    <!-- <script src="../js/app.js"></script> -->
-    <script src="../../bower_components/angular-chat/angular-chat.js"></script>
-    <!-- <script src="../js/names.js"></script> -->
+    </div>
+</div>
+
+
+
+<script src="../../bower_components/angular/angular.min.js"></script>
+<!-- <script src="../js/app.js"></script> -->
+<script src="../../bower_components/angular-chat/angular-chat.js"></script>
+<!-- <script src="../js/names.js"></script> -->
 
 <script>
-angular.module('chat').constant( 'config', {
-    "pubnub": {
-        "publish-key"   : "pub-c-d2c8a43a-3dd1-4e05-97fe-21541e840102",
-        "subscribe-key" : "sub-c-5f585362-4439-11e6-971e-02ee2ddab7fe"
-    }
-} );
+    angular.module('chat').constant( 'config', {
+        "pubnub": {
+            "publish-key"   : "pub-c-d2c8a43a-3dd1-4e05-97fe-21541e840102",
+            "subscribe-key" : "sub-c-5f585362-4439-11e6-971e-02ee2ddab7fe"
+        }
+    } );
 </script>
 
 
 <script>
-var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', '$scope',
-function( Messages, $scope ) {
+    var chat = angular.module( 'BasicChat', ['chat'] );
+    chat.controller( 'chat', [ 'Messages', '$scope',
+        function( Messages, $scope ) {
     // Message Inbox
+    $scope.status = "";
+    
     $scope.messages = [];
+
+Messages.user({ name : sillyname() });
 
     // Receive Messages
     Messages.receive(function(message){
@@ -63,11 +145,16 @@ function( Messages, $scope ) {
     // Send Messages
     $scope.send = function() {
         Messages.send({ data : $scope.textbox });
+        $scope.status = "sending";
+        $scope.textbox = "";
+        setTimeout( function() { chat.status = "" }, 1200 );
     };
+
+     
 } ] );
 </script>
 
-
+<script src="../js/names.js"></script>
 </body>
 </html>
 

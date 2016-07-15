@@ -1,0 +1,235 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+body
+{
+    font-family: 'Open Sans', sans-serif;
+    }
+.popup-messages-footer {
+    background: #fff none repeat scroll 0 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+.popup-messages-footer .btn-footer {
+    overflow: hidden;
+    padding: 2px 5px 10px 6px;
+    width: 100%;
+}
+.simple_round {
+    background: #d1d1d1 none repeat scroll 0 0;
+    border-radius: 50%;
+    color: #4b4b4b !important;
+    height: 21px;
+    padding: 0 0 0 1px;
+    width: 21px;
+}
+
+.popup-box .popup-messages {
+    background: #3f9684 none repeat scroll 0 0;
+    height: 275px;
+    overflow: auto;
+}
+.direct-chat-messages {
+    overflow: auto;
+    padding: 10px;
+    transform: translate(0px, 0px);
+    
+}
+.popup-messages .chat-box-single-line {
+    border-bottom: 1px solid #a4c6b5;
+    height: 12px;
+    margin: 7px 0 20px;
+    position: relative;
+    text-align: center;
+}
+
+.popup-messages abbr.timestamp {
+    background: #3f9684  none repeat scroll 0 0;
+    color: #fff;
+    padding: 0 11px;
+}
+.popup-messages .chat-box-single-line {
+    border-bottom: 1px solid #a4c6b5;
+    height: 12px;
+    margin: 7px 0 20px;
+    position: relative;
+    text-align: center;
+}
+.popup-messages .direct-chat-messages {
+    height: auto;
+}
+.popup-messages .direct-chat-text {
+    background: #dfece7 none repeat scroll 0 0;
+    border: 1px solid #dfece7;
+    border-radius: 2px;
+    color: #1f2121;
+}
+
+.popup-messages .direct-chat-timestamp {
+    color: #fff;
+    opacity: 0.6;
+}
+
+.popup-messages .direct-chat-name {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 0 0 49px !important;
+	color: #fff;
+	opacity: 0.9;
+}
+.popup-messages .direct-chat-info {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.popup-messages  .big-round {
+    margin: -9px 0 0 !important;
+}
+.popup-messages  .direct-chat-img {
+    border: 1px solid #fff;
+	background: #3f9684  none repeat scroll 0 0;
+    border-radius: 50%;
+    float: left;
+    height: 40px;
+    margin: -21px 0 0;
+    width: 40px;
+}
+.direct-chat-reply-name {
+    color: #fff;
+    font-size: 15px;
+    margin: 0 0 0 10px;
+    opacity: 0.9;
+}
+
+.popup-messages .direct-chat-msg {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.popup-messages .doted-border::after {
+	background: transparent none repeat scroll 0 0 !important;
+    border-right: 2px dotted #fff !important;
+	bottom: 0;
+    content: "";
+    left: 17px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 2px;
+	 display: inline;
+	  z-index: -2;
+}
+
+.popup-messages .direct-chat-msg::after {
+    background: #fff none repeat scroll 0 0;
+    border-right: medium none;
+    bottom: 0;
+    content: "";
+    left: 17px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 2px;
+	 display: inline;
+	  z-index: -2;
+}
+.direct-chat-text::after, .direct-chat-text::before {
+   
+    border-color: transparent #dfece7 transparent transparent;
+    
+}
+.direct-chat-text::after, .direct-chat-text::before {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: transparent #d2d6de transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: medium;
+    content: " ";
+    height: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 100%;
+    top: 15px;
+    width: 0;
+}
+.direct-chat-text::after {
+    border-width: 5px;
+    margin-top: -5px;
+}
+.popup-messages .direct-chat-text  {
+    background: #dfece7 none repeat scroll 0 0;
+    border: 1px solid #dfece7;
+    border-radius: 2px;
+    color: #1f2121;
+}
+.direct-chat-text  .direct-chat-text1{
+    background: #d2d6de none repeat scroll 0 0;
+    border: 1px solid #d2d6de;
+    border-radius: 5px;
+    color: #444;
+    margin: 5px 0 0 50px;
+    padding: 5px 10px;
+    position: relative;
+}
+/*###################### send and receive msges  #####*/
+
+.chat_message_right{
+    background: #E8FFD4 none repeat scroll 0 0;
+    float: right;
+    /*color: #fff;*/
+    display: block;
+    float: right;
+    margin-left: 0 !important;
+    margin-right: 24px !important;border-left-color: #E8FFD4;
+border-right-color: #FCFBF6;
+
+}
+/*$$$$$$$$$$$$$*/
+div.sent-message-false {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 2px;
+    /*display: inline-block;*/
+    color: rgba(32,40,70,0.9);
+    padding: 12px;
+    /*border: 1px solid rgba(32,40,70,0.4);*/
+    font-size: 0.8em;
+    font-weight: 400;
+    background: rgba(255,255,255,0.9);
+    animation: received-message 0.9s ease-out 0s;
+}
+div.sent-message-true {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    color: rgba(32,40,70,0.9);
+    padding: 14px;
+    font-size: 0.8em;
+    font-weight: 400;
+    background: rgba(233,234,243,1.0);
+    animation: sent-message 0.9s ease-out 0s;
+}
+
+@keyframes sent-message {
+    0%   { color: rgba(32,40,70,0.9);    transform: translate(100px,50px); opacity: 0 }
+    42%  { color: rgba(32,40,70,0.9);    transform: translate(80px,40px);  opacity: 0.8 }
+    60%  { color: rgba(144,134,251,0.3); transform: translate(-3px,-7px);  opacity: 1 }
+    80%  { color: rgba(32,40,70,0.5);    transform: translate(2px,3px);    opacity: 1 }
+    90%  { color: rgba(32,40,70,0.7);    transform: translate(-1px,-2px);  opacity: 1 }
+    100% { color: rgba(32,40,70,0.9);    transform: translate(0px,0px);    opacity: 1 }
+}
+@keyframes received-message {
+    0%   { color: rgba(32,40,70,0.9);    transform: translate(-100px,0px); opacity: 0 }
+    42%  { color: rgba(32,40,70,0.9);    transform: translate(-80px,0px);  opacity: 0.8 }
+    60%  { color: rgba(122,214,184,0.9); transform: translate(3px,0px);  opacity: 1 }
+    80%  { color: rgba(32,40,70,0.6);    transform: translate(-2px,0px);    opacity: 1 }
+    90%  { color: rgba(32,40,70,0.8);    transform: translate(1px,0px);  opacity: 1 }
+    100% { color: rgba(32,40,70,0.9);    transform: translate(0px,0px);    opacity: 1 }
+}
+
